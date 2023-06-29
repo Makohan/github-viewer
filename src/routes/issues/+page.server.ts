@@ -1,34 +1,28 @@
-import { Octokit } from '@octokit/rest';
-import { GITHUB_TOKEN, OWNER, REPO } from '$env/static/private';
+import { client } from '$lib/octokit/client';
+import { OWNER, REPO } from '$env/static/private';
 import { error } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url }) {
-	const octokit = new Octokit({
-		auth: GITHUB_TOKEN
-	});
-
 	const label = url.searchParams.get('label') || '';
 	console.log('label', label);
 
 	// GitHub CLIでissuesを取得する
-	const res = await octokit.rest.issues.listForRepo({
+	const res = await Promise.all([client.issues.listForRepo({
 		owner: OWNER,
 		repo: REPO,
 		labels: label
-	});
-
-	const res2 = await octokit.rest.issues.listLabelsForRepo({
+	}),client.issues.listLabelsForRepo({
 		owner: OWNER,
 		repo: REPO
-	});
+	})]);
 
-	console.log(res.data[0]);
+	console.log(res);
 
 	if (res) {
 		return {
-			issues: res.data,
-			labels: res2.data,
+			issues: res[0].data,
+			labels: res[1].data,
 			defaultLabel: label
 		};
 	}
