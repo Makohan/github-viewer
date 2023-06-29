@@ -23,6 +23,8 @@ export async function load({ url }) {
 		repo: REPO
 	});
 
+	console.log(res.data[0]);
+
 	if (res) {
 		return {
 			issues: res.data,
