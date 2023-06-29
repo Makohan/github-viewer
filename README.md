@@ -1,38 +1,36 @@
-# create-svelte
+# GitHub Issues Report
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+GitHub Issues Reportは、GitHubのIssueを閲覧するだけの機能を提供するシンプルなツールです。
 
-## Creating a project
+## プロジェクトの詳細
 
-If you're seeing this, you've probably already done this step. Congrats!
+このツールは、特定のGitHubリポジトリのIssueを効率的に閲覧することを目的としています。ユーザーが調査したいリポジトリの情報を環境変数として提供するだけで、Issueのリストを取得できます。
 
+## インストール
+
+まず、必要なパッケージをインストールします：
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+pnpm install
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+次に、開発サーバーを起動します：
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm dev
 ```
 
-## Building
+## 使用方法
 
-To create a production version of your app:
-
+まず、`.env.example`ファイルをコピーして新しい`.env`ファイルを作成します：
 ```bash
-npm run build
+cp .env.example .env
 ```
 
-You can preview the production build with `npm run preview`.
+次に、新しい`.env`ファイルを以下のように更新します：
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+```
+OWNER=あなたのGitHubユーザー名
+REPO=閲覧したいリポジトリ名
+GITHUB_TOKEN=あなたのGitHubのトークン
+```
+
+以上で設定は完了です。次に`pnpm dev`を実行すると、設定したリポジトリのIssueを閲覧できます。
