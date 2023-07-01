@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Label from '$lib/components/Label.svelte';
+	import dayjs from 'dayjs';
 
 	export let data;
 
@@ -70,7 +71,7 @@
 							{issue.assignee?.login || ''}
 						</td>
 						<td class="px-6 py-4">
-							{issue.updated_at}
+							{dayjs(issue.updated_at).format('YYYY-MM-DD hh:mm')}
 						</td>
 					</tr>{/each}
 			</tbody>
