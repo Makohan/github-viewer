@@ -6,6 +6,16 @@ GitHub Viewer is a simple service for viewing data on GitHub.
 
 This tool is designed for efficiently viewing Issues of a specific GitHub repository. By simply providing the information of the repository they wish to investigate as environment variables, users can retrieve a list of Issues. (Viewing of Projects is on the to-do list.)
 
+## Sample
+
+### Issue list
+
+<img src="./documentation/images/sample_issue_list.png" />
+
+### Issue Detail
+
+<img src="./documentation/images/sample_issue_detail.png" />
+
 ## Usage
 
 First, copy the `.env.example` file and create a new `.env` file.
@@ -29,3 +39,8 @@ pnpm install
 
 pnpm dev
 ```
+
+## Not yet implemented
+
+- [ ] Viewing of Projects
+- [ ] ~~Displaying images in Issues"~~(no plan)
