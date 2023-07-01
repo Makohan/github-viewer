@@ -24,7 +24,7 @@
 
 <div class="w-32">
 	<label for="countries" class="block mb-2 text-sm font-medium text-gray-900"
-		>Select an option</label
+		>Select a label</label
 	>
 	<select
 		bind:value={selectedLabel}
