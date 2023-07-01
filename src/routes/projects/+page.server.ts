@@ -1,6 +1,5 @@
-import { client } from '$lib/octokit/client';
-import { OWNER, REPO } from '$env/static/private';
 import { error } from '@sveltejs/kit';
+import { listProjectsForRepo } from '$lib/octokit/projects.js';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url }) {
@@ -8,10 +7,7 @@ export async function load({ url }) {
 	console.log('label', label);
 
 	// GitHub CLIでprojectsを取得する
-	const res = await client.projects.listForRepo({
-		owner: OWNER,
-		repo: REPO
-	});
+	const res = await listProjectsForRepo();
 
 	console.log(res);
 

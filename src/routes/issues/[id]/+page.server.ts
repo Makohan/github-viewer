@@ -1,28 +1,15 @@
-import { OWNER, REPO } from '$env/static/private';
 import { error } from '@sveltejs/kit';
-import { client } from '$lib/octokit/client.js';
+import { getIssue, listComments } from '$lib/octokit';
 
 export async function load({ params }) {
-	const res = await client.issues.get({
-		owner: OWNER,
-		repo: REPO,
-		issue_number: Number(params.id)
-	});
-
-	console.log('-----');
+	const res = await getIssue(Number(params.id));
 	console.log(res.data);
-
-	const commentsPromise = client.issues.listComments({
-		owner: OWNER,
-		repo: REPO,
-		issue_number: Number(params.id)
-	});
 
 	if (res) {
 		return {
 			issue: res.data,
 			streamed: {
-				commentsPromise
+				commentsPromise: listComments(Number(params.id))
 			}
 		};
 	}

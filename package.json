@@ -38,6 +38,7 @@
 	"type": "module",
 	"dependencies": {
 		"@octokit/rest": "^19.0.13",
+		"dayjs": "^1.11.9",
 		"marked": "^5.1.0"
 	}
 }

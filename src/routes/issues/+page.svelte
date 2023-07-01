@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Label from '$lib/components/Label.svelte';
+
 	export let data;
 
 	const { issues, labels, defaultLabel } = data;
@@ -13,17 +15,11 @@
 		}
 	}
 
-	function clickLabel(labelName: string) {
+	function clickLabel(labelName: string | undefined) {
 		selectedLabel = labelName;
 		filter();
 	}
 </script>
-
-<h1
-	class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl"
->
-	Issue List
-</h1>
 
 <div class="w-32">
 	<label for="countries" class="block mb-2 text-sm font-medium text-gray-900"
@@ -56,20 +52,18 @@
 			<tbody>
 				{#each issues as issue}
 					<tr class="bg-white border-b">
-						<th
-							scope="row"
-							class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-						>
+						<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
 							<a href={`/issues/${issue.number}`}>{issue.title} </a>
 						</th>
 						<td class="px-6 py-4">
 							{#each issue.labels as label}
-								<button
-									type="button"
-									on:click={() => clickLabel(label?.name)}
-									style="color: #{label.color}; border-color: #{label.color}; background-color: #f0f8ff;"
-									>{label?.name}</button
-								>
+								{@const labelName = typeof label === 'string' ? label : label.name}
+								{@const labelColor = typeof label === 'string' ? undefined : label.color}
+								<Label
+									label={labelName}
+									color={labelColor}
+									on:click={() => clickLabel(labelName)}
+								/>
 							{/each}
 						</td>
 						<td class="px-6 py-4">
