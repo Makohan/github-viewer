@@ -8,7 +8,7 @@ This tool is designed for efficiently viewing Issues of a specific GitHub reposi
 
 ## Sample
 
-https://issues-viewer-kohl.vercel.app/
+https://github-viewer-mkin.vercel.app/
 
 ### Issue list
 
