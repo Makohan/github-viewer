@@ -1,5 +1,5 @@
 {
-	"name": "issues-report",
+	"name": "issues-viewer",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
