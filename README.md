@@ -1,39 +1,31 @@
-# GitHub Issues Report
+# GitHub Viewer
 
-GitHub Issues Report は、GitHub の Issue を閲覧するだけの機能を提供するシンプルなツールです。
+GitHub Viewer is a simple service for viewing data on GitHub.
 
-## プロジェクトの詳細
+## Details
 
-このツールは、特定の GitHub リポジトリの Issue を効率的に閲覧することを目的としています。ユーザーが調査したいリポジトリの情報を環境変数として提供するだけで、Issue のリストを取得できます。
+This tool is designed for efficiently viewing Issues of a specific GitHub repository. By simply providing the information of the repository they wish to investigate as environment variables, users can retrieve a list of Issues. (Viewing of Projects is on the to-do list.)
 
-## インストール
+## Usage
 
-まず、必要なパッケージをインストールします：
-
-```bash
-pnpm install
-```
-
-次に、開発サーバーを起動します：
-
-```bash
-pnpm dev
-```
-
-## 使用方法
-
-まず、`.env.example`ファイルをコピーして新しい`.env`ファイルを作成します：
+First, copy the `.env.example` file and create a new `.env` file.
 
 ```bash
 cp .env.example .env
 ```
 
-次に、新しい`.env`ファイルを以下のように更新します：
+Next, update the new `.env` file as follows.
 
 ```
-OWNER=あなたのGitHubユーザー名
-REPO=閲覧したいリポジトリ名
-GITHUB_TOKEN=あなたのGitHubのトークン
+OWNER=your GitHub username
+REPO=the repository you want to view
+GITHUB_TOKEN=your GitHub token
 ```
 
-以上で設定は完了です。次に`pnpm dev`を実行すると、設定したリポジトリの Issue を閲覧できます。
+Finally, once the packages are installed, you can run it.
+
+```bash
+pnpm install
+
+pnpm dev
+```
